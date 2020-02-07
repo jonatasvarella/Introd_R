@@ -1,0 +1,17 @@
+##################################
+# Cores usadas pela Quaest
+
+RED = "#eb422c"
+BLUEQ = "#1fa8a9"
+BLUE = "#2660b7"
+ORANGE = "orange1"
+GREY = "#969696"
+GREEN = "#07c568"
+DARKGREEN = "#0d7c83"
+YELLOW = "#cccc00"
+LIGHTBLUE = "#10acb8"
+LIGHTGREEN = "#08cfa6"
+MIDDLEBLUE = "#088ccf"
+BROWN = "#A52A2AFF"
+DARKGREY = "#333333FF"
+VIOLET = "#EE82EEFF"

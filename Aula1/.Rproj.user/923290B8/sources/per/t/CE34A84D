@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1579782804417.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3787160522",
+    "id" : "CE34A84D",
+    "lastKnownWriteTime" : 1560972144,
+    "last_content_update" : 1560972144,
+    "path" : "~/Desktop/Quaest/Contagem/contagem_analise1_3/quaest_cores.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "11,21",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
