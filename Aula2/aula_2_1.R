@@ -21,9 +21,9 @@
 # Tambem usaremos alguns pacotes, que nada mais sao do que conjuntos de funcoes criadas por
 # alguem e que estao disponiveis para download. O procedimento e' simples: instalamos um pacote,
 # carregamos ele e, entao, passamos a usar as suas funcoes. Nesta aula, precisaremos instalar:
-install.packages("readxl") 
-install.packages("haven")
-install.packages("rio")
+# install.packages("readxl") 
+# install.packages("haven")
+# install.packages("rio")
 
 
 # Como na aula anterior, tambem precisaremos carregar esses pacotes. Usamos 'library':
