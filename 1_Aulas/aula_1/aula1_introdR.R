@@ -1,5 +1,9 @@
-## Aula 01
-# 29/01
+## Aula 01  | Introdução ao R
+## Jonatas Varella - 04/03
+# Avaliação de políticas públicas B
+# Código utilizado dos repositórios dos professores: Fernando Meireles e Neylson Crepalde
+# https://github.com/meirelesff e https://github.com/neylsoncrepalde
+#################################################
 
 # Este e' um comentario.
 
@@ -67,9 +71,6 @@ x * x
 x^2 # ^ e' o operador de exponenciacao
 
 
-# Existem varios outros operadores:
-3 %% 2 # resto
-3 %/% 2 # divisao sem resto
 
 
 # Tambem podemos visualizar o conteudo do objeto x por meio da funcao
@@ -124,12 +125,12 @@ help("+")
 1:10
 
 
-# E este, de 10 a 1:
+# E este, de 30 a 1:
 30:1
 
 
 # Podemos criar a mesma sequencia desta forma:
-x <- c(10, -10, 5, 300, -2.4, 3, 99)
+x <- c(1,2,3,4, 5:10)
 
 
 # No caso, a funcao c() (combine) diz ao R que queremos que
@@ -210,145 +211,108 @@ help(sum)
 help("%/%")
 
 
-##### Exemplos ######
-# Armazena valores numericos em dois objetos (x e y) e depois soma os dois
-x <- 2
-y <- 2
-x + y
+# No arquivo 1_exemplos_basicos.R, na pasta de scripts adicionais, estao disponiveis 
+# alguns exemplos de codigos comentados, que podem ser usados para praticar o que
+# foi visto ate' aqui.
 
 
-# Divide um numero pelo outro
-10 / 2
+# ------------------------------------------------------------------------------
 
 
-# Divide um numero pelo outro e, depois, divide o resultado da divisao por
-# outro numero:
-10 / 2 / 5
+# Muitas vezes, queremos usar codigo feito por outra pessoa que esta' em um pacote --
+# o que nada mais e' que um amontoado de codigo com utilidades diversas. Instalamos
+# um pacote com 'install.packages'. 
 
 
-# Realiza uma operacao mais complexa (use parentesis para fazer o R executar
-# algo primeiro porque o resultado pode mudar):
-(1 + 2) / (5 + 2)
-1 + 2 / 5 + 2
+# Neste curso, usaremos muito o 'tidyverse'. Vamos instala-lo:
+install.packages("tidyverse")
 
 
-# Exponencia um numero
-2^2
-x <- 2
-x^2
-x^2
+# Feito isso, podemos carrega-lo com:
+library(tidyverse)
 
 
-# Raiz quadrada de um numero (com a funcao sqrt)
-sqrt(4)
-sqrt(16)
+# Pronto, podemos usar suas funcoes. Para ter uma idea, elas sao mais de 300,
+# incluindo desde de manipulacao de qualquer tipo de dado, navegacao na internet
+# via httr ate' producao de graficos.
 
 
-# Cria uma sequencia de numeros de 1 a 10
-1:10
+# Alem disso, o tidyverse vem com alguns bancos de dados (data.frames ou tibbles),
+# que sao uteis para nos familiarizarmos com esse tipo de formato.
 
 
-# Cria uma sequencia de numeros de 10 a 1
-10:1
+# Particularmente, o tidyverse tem um banco (salvo em um objeto) chamado band_members.
+# Vamos tentar abri-lo.
+band_members
 
 
-# Salva e printa uma sequencia de numeros num objeto
-x <- 1:10
-
-x
-
-# Subtrai 1 de cada numero na sequencia anterior
-x - 1
+# Ok, podemos fazer melhor.
+View(band_members)
 
 
-# Salva a sequencia x (vetor) com o resultado da
-# subtracao por 1
-x <- x - 1
+# Essa funcao, View, nao faz parte do tidyverse, mas e' util para visualizar dados
+# como em uma planilha.
 
 
-# Eleva cada numero de x ao quadrado
-x^2
+# Ou, melhor ainda, pra ser rapido e sintetico:
+glimpse(band_members)
 
 
-# A funcao sum soma todos os numeros de um vetor
-x <- 1:10
-sum(x)
+# Se quisermos apenas saber o nome de todas as variaveis em um data.frame, podemos usar:
+names(band_members)
 
 
-# Soma dois numeros
-sum(2, 3)
+# Para saber o numero de linhas e de colunas, respectivamente:
+nrow(band_members)
+ncol(band_members)
 
 
-# Soma tres numeros
-sum(1, 2, 3)
+# Para adiantar um pouco do que veremos, o tidyverse cont?m in?meras funcoes que
+# servem para manipular objetos como esses, os data.frames. A estrutura de todas
+# elas e' bastante similar: funcao(data.frame, argumento).
 
 
-# A funcao mean calcula a media de um vetor de numeros
-x <- 1:10
-mean(x)
+# Vamos comecar com algumas operacoes simples, apenas para voces terem o feeling
+# de como a coisa funciona. Suponhamos que, do data.frame 'band_members', eu
+# queira preservar apenas a variavel 'name'. Como fazemos isso? Usando o tidyverse:
+select(band_members, name)
 
 
-# Calcula a media de dois numeros
-numeros <- c(1, 3)
-mean(numeros)
+# Para selecionar a variavel 'band', do mesmo modo, usamos:
+select(band_members, band)
 
 
-# Salva o resultado da media entre dois numeros
-resultado <- mean(1, 3)
+# Se quisermos selecionar as duas (o que nao faz tanto sentido aqui, mas sera' 
+# no futuro):
+select(band_members, band, name)
+select(band_members, c(name, band))
+
+# Note que, com esse codigo, inclusive invertemos a ordem das variaveis. Caso
+# voce queira fazer em isso em qualquer base, esse e' uma das formas.
 
 
-# O R e' case sensitive, o que significa que caixa baixa e alta faz diferenca:
-
-Resultado # da' erro
-resultado # printa o resultado da media de 1 e 3 sem erro
+# Antes de encerrar, vamos ver um tipo de select que funciona nas linhas, slice:
+slice(band_members, 1)
 
 
-# A funcao rep cria uma sequencia de numeros
-rep(1, 3)
+# Viram? slice(data.frame, 1) pega a primeira linha de um deta.frame. Ela e'
+# parecida com select, mas funciona nas linhas, na horizontal. Como pegar
+# apenas a segunda linha de um banco? Facil:
+slice(band_members, 2)
 
 
-# Podemos criar uma sequencia de 10 numeros '2'
-rep(2, 10)
+# E se eu quiser a primeira e a segunda? Existem algumas formas:
+slice(band_members, 1, 2)
 
 
-# A funcao rep tambem pode ser usada para repetir strings:
-rep("exemplo", 10)
+# Ou (note que estou usando vetores para fazer isso):
+slice(band_members, 1:2)
 
 
-# A funcao seq cria uma sequencia crescente ou decrescente:
-seq(1, 10)
-
-seq(10, 1)
+# O que e' igual tambem a:
+slice(band_members, c(1, 2))
 
 
-# Podemos especificar o intervalo da sequencia por meio do argumento
-# by. Exemplo:
-seq(1, 10, by = 0.5)
+# Com isso, encerramos essa parte do conteudo. Falta ainda vermos muitas coisas,
+# mas espero que isso ja' tenha dado uma ideia do que vem pela frente.
 
-
-# Podemos salvar dois vetores criados com seq e somar eles
-x <- seq(1, 10)
-z <- seq(10, 1)
-
-x + z 
-
-
-# Podemos criar um vetor de numeros com a funcao numeric
-
-numeric(10) # Cria um vetor com dez 0's
-
-
-# Acessa a documentacao da funcao numeric
-help(numeric)
-
-
-# Acessa a documentacao da funcao seq
-help(seq)
-
-
-# Acessa a documentacao da funcao seq (jeito mais simples)
-?seq
-
-x = 1:100
-x[50] = 1000
-x[c(50,100)]

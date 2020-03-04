@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583351694624.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3959427618",
+    "id" : "A4E44313",
+    "lastKnownWriteTime" : 1583352405,
+    "last_content_update" : 1583352405537,
+    "path" : "~/Desktop/Jonatas/GitHub/Introd_R/Introd_R/1_Aulas/aula_1/aula1_introdR.R",
+    "project_path" : "aula1_introdR.R",
+    "properties" : {
+        "cursorPosition" : "10,63",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
